@@ -10,7 +10,7 @@ A Vagrant script for setting up WSO2
 
 ## Pre-requisites
 
-1. Install Vagrant hostmaster plugin - https://github.com/mosaicxm/vagrant-hostmaster. <br /><code>$ vagrant gem install vagrant-hostmaster</code>
+1. Install Vagrant hostmanager plugin - https://github.com/smdahlen/vagrant-hostmanager. <br /><code>$ vagrant plugin install vagrant-hostmanager</code>
 2. Download WSO2 Application Server 5.2.1
 3. Download WSO2 Identity Server 4.6.0
 
