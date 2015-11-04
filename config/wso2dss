@@ -1,10 +1,10 @@
 #! /bin/sh
 # chkconfig: 2345 20 80
-# description: SysVInit script for WSO2 API Manager
+# description: SysVInit script for WSO2 Data Services Server
 
 export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_65
 export SERVICE_HOME='/opt/wso2/wso2dss-3.5.0'
-export SERVICE_NAME='WSO2 DSS'
+export SERVICE_NAME='WSO2 Data Services Server'
 export USER=vagrant
 
 startcmd="$SERVICE_HOME/bin/wso2server.sh start > /dev/null &"
