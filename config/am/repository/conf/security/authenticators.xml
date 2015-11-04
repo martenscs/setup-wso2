@@ -32,9 +32,20 @@
         <Priority>10</Priority>
         <Config>
             <Parameter name="LoginPage">/carbon/admin/login.jsp</Parameter>
-            <Parameter name="ServiceProviderID">IdentityServer</Parameter>
+            <Parameter name="ServiceProviderID">APIManager</Parameter>
             <Parameter name="IdentityProviderSSOServiceURL">https://is-master.tmwsystems.com:9443/samlsso</Parameter>
             <Parameter name="NameIDPolicyFormat">urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</Parameter>
+
+            <!-- <Parameter name="IdPCertAlias">wso2carbon</Parameter> -->
+            <!-- <Parameter name="ResponseSignatureValidationEnabled">false</Parameter> -->
+            <!-- <Parameter name="LoginAttributeName"></Parameter> -->
+            <!-- <Parameter name="RoleClaimAttribute"></Parameter> -->
+            <!-- <Parameter name="AttributeValueSeparator">,</Parameter> -->
+
+            <!-- <Parameter name="JITUserProvisioning">true</Parameter> -->
+            <!-- <Parameter name="ProvisioningDefaultUserstore">PRIMARY</Parameter> -->
+            <!-- <Parameter name="ProvisioningDefaultRole">admin</Parameter> -->
+            <!-- <Parameter name="IsSuperAdminRoleRequired">true</Parameter> -->
 	</Config>
 	
 	<!-- If this authenticator should skip any URI from authentication, specify it under "SkipAuthentication"

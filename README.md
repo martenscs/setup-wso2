@@ -12,7 +12,7 @@ A Vagrant script for setting up WSO2
 
 1. Install Vagrant hostmanager plugin - https://github.com/smdahlen/vagrant-hostmanager. <br /><code>$ vagrant plugin install vagrant-hostmanager</code>
 2. Download WSO2 Application Server 5.2.1
-3. Download WSO2 Identity Server 4.6.0
+3. Download WSO2 Identity Server 5.0.0
 
 ## Running
 
@@ -25,6 +25,6 @@ This sets up 3 VMs using VirtualBox. MySQL, Application Server and Identity Serv
 ## Accessing servers
 
 Open a browser and navigate to,<br/>
-  Application Server - https://as.test.wso2.com:9443<br/>
-  Identity Server - https://is.test.wso2.com:9443
+  Application Server - https://as-master.tmwsystems.com:9443<br/>
+  Identity Server - https://is-master.tmwsystems.com:9443
 

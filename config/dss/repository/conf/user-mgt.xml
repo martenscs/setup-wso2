@@ -66,8 +66,7 @@
 			as tokens when building configurations for products. -->
 		<UserStoreManager
 			class="org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager">
-			<Property name="TenantManager">org.wso2.carbon.user.core.tenant.JDBCTenantManager
-			</Property>
+			<Property name="TenantManager">org.wso2.carbon.user.core.tenant.JDBCTenantManager</Property>
 			<Property name="ReadOnly">false</Property>
 			<Property name="MaxUserNameListLength">100</Property>
 			<Property name="IsEmailUserName">false</Property>
@@ -79,11 +78,9 @@
 			<Property name="UserNameUniqueAcrossTenants">false</Property>
 			<Property name="PasswordJavaRegEx">^[\S]{5,30}$</Property>
 			<Property name="PasswordJavaScriptRegEx">^[\S]{5,30}$</Property>
-			<Property name="UsernameJavaRegEx">^[^~!#$;%^*+={}\\|\\\\&lt;&gt;,\'\"]{3,30}$
-			</Property>
+			<Property name="UsernameJavaRegEx">^[^~!#$;%^*+={}\\|\\\\&lt;&gt;,\'\"]{3,30}$</Property>
 			<Property name="UsernameJavaScriptRegEx">^[\S]{3,30}$</Property>
-			<Property name="RolenameJavaRegEx">^[^~!#$;%^*+={}\\|\\\\&lt;&gt;,\'\"]{3,30}$
-			</Property>
+			<Property name="RolenameJavaRegEx">^[^~!#$;%^*+={}\\|\\\\&lt;&gt;,\'\"]{3,30}$</Property>
 			<Property name="RolenameJavaScriptRegEx">^[\S]{3,30}$</Property>
 			<Property name="UserRolesCacheEnabled">true</Property>
 			<Property name="MaxRoleNameListLength">100</Property>
@@ -191,12 +188,12 @@
 			service principle management. Thus "ServicePasswordJavaRegEx", "ServiceNameJavaRegEx" 
 			properties control the service name format and service password formats. 
 			In case if user core cache domain is needed to identify uniquely set property 
-			<Property name="UserCoreCacheIdentifier">domain</Property> -->
-		<!-- UserStoreManager class="org.wso2.carbon.user.core.ldap.ReadWriteLDAPUserStoreManager"> 
-			<Property name="TenantManager">org.wso2.carbon.user.core.tenant.CommonHybridLDAPTenantManager 
+			<Property name="UserCoreCacheIdentifier">domain</Property> <UserStoreManager 
+			class="org.wso2.carbon.user.core.ldap.ReadWriteLDAPUserStoreManager"> <Property 
+			name="TenantManager">org.wso2.carbon.user.core.tenant.CommonHybridLDAPTenantManager 
 			</Property> <Property name="defaultRealmName">WSO2.ORG</Property> <Property 
 			name="kdcEnabled">false</Property> <Property name="Disabled">false</Property> 
-			<Property name="ConnectionURL">ldap://0.0.0.0:${Ports.EmbeddedLDAP.LDAPServerPort} 
+			<Property name="ConnectionURL">ldap://is-master.tmwsystems.com:${Ports.EmbeddedLDAP.LDAPServerPort} 
 			</Property> <Property name="ConnectionName">uid=admin,ou=system</Property> 
 			<Property name="ConnectionPassword">admin</Property> <Property name="passwordHashMethod">SHA</Property> 
 			<Property name="UserNameListFilter">(objectClass=person)</Property> <Property 
@@ -223,7 +220,7 @@
 			<Property name="UserDNPattern">uid={0},ou=Users,dc=wso2,dc=org</Property> 
 			<Property name="RoleDNPattern">cn={0},ou=Groups,dc=wso2,dc=org</Property> 
 			<Property name="SCIMEnabled">true</Property> <Property name="MaxRoleNameListLength">100</Property> 
-			<Property name="MaxUserNameListLength">100</Property> </UserStoreManager -->
+			<Property name="MaxUserNameListLength">100</Property> </UserStoreManager> -->
 
 		<!-- Following configuration is for the CassandraUserStoreManager. The 
 			CassandraUserStoreManager is capable of using a Cassandra database as a user 

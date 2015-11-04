@@ -33,7 +33,7 @@
         <Config>
             <Parameter name="LoginPage">/carbon/admin/login.jsp</Parameter>
             <Parameter name="ServiceProviderID">ApplicationServer</Parameter>
-            <Parameter name="IdentityProviderSSOServiceURL">https://is.test.wso2.com:9443/samlsso</Parameter>
+            <Parameter name="IdentityProviderSSOServiceURL">https://is-master.tmwsystems.com:9443/samlsso</Parameter>
             <Parameter name="NameIDPolicyFormat">urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</Parameter>
 	</Config>
 	

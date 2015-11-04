@@ -77,7 +77,7 @@
         <password>password</password>
     </remoteInstance> -->
 
-    <remoteInstance url="https://localhost:9443/registry">
+    <remoteInstance url="https://localhost:9444/registry">
         <id>govregistry</id>
         <dbConfig>wso2registry_gov</dbConfig>
         <readOnly>false</readOnly>
