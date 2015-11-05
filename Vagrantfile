@@ -102,16 +102,18 @@ sudo /etc/init.d/mysql restart
 
 if [ ! -f /var/log/databasesetup ];
 then
-    echo "CREATE DATABASE ssotestregistrydb" | mysql -uroot -proot
-    echo "CREATE DATABASE ssotestuserdb" | mysql -uroot -proot
+    echo "CREATE DATABASE registrydb" | mysql -uroot -proot
+    echo "CREATE DATABASE userdb" | mysql -uroot -proot
     echo "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'root'" | mysql -uroot -proot
+    echo "GRANT ALL ON registrydb.* TO regadmin@'%' IDENTIFIED BY 'regadmin'" | mysql -uroot -proot
+    echo "GRANT ALL ON userdb.* TO useradmin@'%' IDENTIFIED BY 'useradmin'" | mysql -uroot -proot
     echo "FLUSH PRIVILEGES" | mysql -uroot -proot
     touch /var/log/databasesetup
     
     if [ -f /vagrant/config/mysql/mysql.sql ];
     then
-        mysql -uroot -proot ssotestregistrydb < /vagrant/config/mysql/mysql.sql
-        mysql -uroot -proot ssotestuserdb < /vagrant/config/mysql/mysql.sql
+        mysql -uroot -proot registrydb < /vagrant/config/mysql/mysql.sql
+        mysql -uroot -proot userdb < /vagrant/config/mysql/mysql.sql
     fi
 fi
 MYSQL
@@ -123,10 +125,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.box = "hashicorp/precise64"
 
-    config.hostmanager.enabled = true
-    config.hostmanager.manage_host = true
-    config.hostmanager.include_offline = true
-    config.hostmanager.ignore_private_ip = false
+  #  config.hostmanager.enabled = true
+  #  config.hostmanager.manage_host = true
+  #  config.hostmanager.include_offline = true
+  #  config.hostmanager.ignore_private_ip = false
 
     config.vm.define "mysql" do |mysql|
       mysql.vm.provider :virtualbox do |n|
