@@ -43,7 +43,7 @@
 		</ServiceProvider>
 
 		<ServiceProvider>
-			<Issuer>APIManager</Issuer>
+			<Issuer>API_Manager</Issuer>
 			<AssertionConsumerService>https://as-master.tmwsystems.com:9444/acs</AssertionConsumerService>
 			<SignResponse>true</SignResponse>
 			<EnableAttributeProfile>true</EnableAttributeProfile>

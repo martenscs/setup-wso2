@@ -7,6 +7,11 @@ java -version
 sudo apt-get install unzip
 sudo mkdir /opt/wso2
 
+
+
+
+
+
 sudo cp /vagrant/packs/wso2is-5.0.0.zip /opt/wso2
 sudo cp /vagrant/packs/wso2dss-3.5.0.zip /opt/wso2
 sudo cp /vagrant/packs/wso2esb-4.9.0.zip /opt/wso2
@@ -19,9 +24,15 @@ rm wso2is-5.0.0.zip
 rm wso2dss-3.5.0.zip
 rm wso2esb-4.9.0.zip
 
-cp -rf /vagrant/config/is/* wso2is-5.0.0/
+cp -rf /vagrant/config/is/ wso2is-5.0.0/
 cp -rf /vagrant/config/dss/* wso2dss-3.5.0/
 cp -rf /vagrant/config/esb/* wso2esb-4.9.0/
+#cp -rf /vagrant/config/is/repository/conf/carbon.xml wso2is-5.0.0/repository/conf/carbon.xml
+#cp -rf /vagrant/config/dss/repository/conf/carbon.xml wso2dss-3.5.0/repository/conf/carbon.xml
+#cp -rf /vagrant/config/esb/repository/conf/carbon.xml wso2esb-4.9.0/repository/conf/carbon.xml
+#cp -rf /vagrant/config/is/repository/conf/datasources/master-datasources.xml wso2is-5.0.0/repository/conf/datasources/master-datasources.xml
+#cp -rf /vagrant/config/dss/repository/conf/datasources/master-datasources.xml wso2dss-3.5.0/repository/conf/datasources/master-datasources.xml
+#cp -rf /vagrant/config/esb/repository/conf/datasources/master-datasources.xml wso2esb-4.9.0/repository/conf/datasources/master-datasources.xml
 wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar -P wso2is-5.0.0/repository/components/lib/
 wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar -P wso2dss-3.5.0/repository/components/lib/
 wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar -P wso2esb-4.9.0/repository/components/lib/
@@ -104,10 +115,16 @@ if [ ! -f /var/log/databasesetup ];
 then
     echo "CREATE DATABASE registrydb" | mysql -uroot -proot
     echo "CREATE DATABASE userdb" | mysql -uroot -proot
+    echo "create database alfresco default character set utf8" | mysql -uroot -proot
     echo "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'root'" | mysql -uroot -proot
     echo "GRANT ALL ON registrydb.* TO regadmin@'%' IDENTIFIED BY 'regadmin'" | mysql -uroot -proot
     echo "GRANT ALL ON userdb.* TO useradmin@'%' IDENTIFIED BY 'useradmin'" | mysql -uroot -proot
+	echo "grant all on alfresco.* to 'alfresco'@'%' identified by 'alfresco' with grant option"  | mysql -uroot -proot
+
     echo "FLUSH PRIVILEGES" | mysql -uroot -proot
+    
+    
+    
     touch /var/log/databasesetup
     
     if [ -f /vagrant/config/mysql/mysql.sql ];
@@ -125,10 +142,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.box = "hashicorp/precise64"
 
-  #  config.hostmanager.enabled = true
-  #  config.hostmanager.manage_host = true
-  #  config.hostmanager.include_offline = true
-  #  config.hostmanager.ignore_private_ip = false
+    config.hostmanager.enabled = true
+   	config.hostmanager.manage_host = true
+   	config.hostmanager.include_offline = true
+   	config.hostmanager.ignore_private_ip = false
 
     config.vm.define "mysql" do |mysql|
       mysql.vm.provider :virtualbox do |n|
