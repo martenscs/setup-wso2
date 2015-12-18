@@ -1,0 +1,70 @@
+<!-- ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved. ~ ~ WSO2 Inc. licenses this file to you under the Apache License, ~ Version 2.0 (the "License"); you may not use this 
+	file except ~ in compliance with the License. ~ You may obtain a copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by applicable law or agreed to in writing, ~ software 
+	distributed under the License is distributed on an ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY ~ KIND, either express or implied. See the License for the ~ specific language governing permissions 
+	and limitations ~ under the License. -->
+<SSOIdentityProviderConfig>
+	<ServiceProviders>
+		<ServiceProvider>
+			<Issuer>IdentityServer</Issuer>
+			<AssertionConsumerService>https://is-master.tmwsystems.com:9443/acs</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+
+		<ServiceProvider>
+			<Issuer>carbonDSSServer</Issuer>
+			<AssertionConsumerService>https://is-master.tmwsystems.com:9444/acs</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+		<ServiceProvider>
+			<Issuer>DataAnalyticsServer</Issuer>
+			<AssertionConsumerService>https://as-master.tmwsystems.com:9445/acs</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+		<ServiceProvider>
+			<Issuer>ApplicationServer</Issuer>
+			<AssertionConsumerService>https://as-master.tmwsystems.com:9443/acs</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+
+		<ServiceProvider>
+			<Issuer>EnterpriseServiceBus</Issuer>
+			<AssertionConsumerService>https://is-master.tmwsystems.com:9445/acs</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+
+		<ServiceProvider>
+			<Issuer>API_Manager</Issuer>
+			<AssertionConsumerService>https://as-master.tmwsystems.com:9444/acs</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+
+		<ServiceProvider>
+			<Issuer>API_PUBLISHER</Issuer>
+			<AssertionConsumerService>https://as-master.tmwsystems.com:9444/publisher/jagg/jaggery_acs.jag</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+
+		<ServiceProvider>
+			<Issuer>API_STORE</Issuer>
+			<AssertionConsumerService>https://as-master.tmwsystems.com:9444/store/jagg/jaggery_acs.jag</AssertionConsumerService>
+			<SignResponse>true</SignResponse>
+			<EnableAttributeProfile>true</EnableAttributeProfile>
+			<EnableSingleLogout>true</EnableSingleLogout>
+		</ServiceProvider>
+
+	</ServiceProviders>
+</SSOIdentityProviderConfig>

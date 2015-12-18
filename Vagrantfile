@@ -5,6 +5,7 @@ $is_script = <<ISSCRIPT
 wget --no-check-certificate https://github.com/aglover/ubuntu-equip/raw/master/equip_java7_64.sh && bash equip_java7_64.sh
 java -version
 sudo apt-get install unzip
+sudo apt-get install httping
 sudo mkdir /opt/wso2
 
 
@@ -18,39 +19,58 @@ sudo cp /vagrant/packs/wso2esb-4.9.0.zip /opt/wso2
 cd /opt/wso2
 
 unzip wso2is-5.0.0.zip
+rm wso2is-5.0.0.zip
+cp -rfv /vagrant/config/is/repository/conf/carbon.xml wso2is-5.0.0/repository/conf/carbon.xml
+wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar -P wso2is-5.0.0/repository/components/lib/
+cp -rfv /vagrant/config/is/repository/conf/datasources/master-datasources.xml wso2is-5.0.0/repository/conf/datasources/master-datasources.xml
+
+chown -R vagrant:vagrant /opt/wso2/wso2is-5.0.0
+cp /vagrant/config/wso2is /etc/init.d/wso2is
+chmod 755 /etc/init.d/wso2is
+/etc/init.d/wso2is start
+
+
 unzip wso2dss-3.5.0.zip
 unzip wso2esb-4.9.0.zip
-rm wso2is-5.0.0.zip
+
+
+
 rm wso2dss-3.5.0.zip
 rm wso2esb-4.9.0.zip
 
-cp -rf /vagrant/config/is/ wso2is-5.0.0/
-cp -rf /vagrant/config/dss/* wso2dss-3.5.0/
-cp -rf /vagrant/config/esb/* wso2esb-4.9.0/
-#cp -rf /vagrant/config/is/repository/conf/carbon.xml wso2is-5.0.0/repository/conf/carbon.xml
-#cp -rf /vagrant/config/dss/repository/conf/carbon.xml wso2dss-3.5.0/repository/conf/carbon.xml
-#cp -rf /vagrant/config/esb/repository/conf/carbon.xml wso2esb-4.9.0/repository/conf/carbon.xml
-#cp -rf /vagrant/config/is/repository/conf/datasources/master-datasources.xml wso2is-5.0.0/repository/conf/datasources/master-datasources.xml
-#cp -rf /vagrant/config/dss/repository/conf/datasources/master-datasources.xml wso2dss-3.5.0/repository/conf/datasources/master-datasources.xml
-#cp -rf /vagrant/config/esb/repository/conf/datasources/master-datasources.xml wso2esb-4.9.0/repository/conf/datasources/master-datasources.xml
+/etc/init.d/wso2is stop
+chown -R vagrant:vagrant /opt/wso2/wso2is-5.0.0
+
+sudo cp /vagrant/config/wso2dss /etc/init.d/wso2dss
+sudo chmod 755 /etc/init.d/wso2dss
+
+sudo cp /vagrant/config/wso2esb /etc/init.d/wso2esb
+sudo chmod 755 /etc/init.d/wso2esb
+
+
+cp -rfv /vagrant/config/is/repository/conf/sso-idp-config.xml wso2is-5.0.0/repository/conf/sso-idp-config.xml
+cp -rfv /vagrant/config/is/repository/components/* wso2is-5.0.0/repository/components
+#cp -rfv /vagrant/config/is/* wso2is-5.0.0/
+cp -rfv /vagrant/config/dss/* wso2dss-3.5.0/
+cp -rfv /vagrant/config/esb/* wso2esb-4.9.0/
+#cp -rfv /vagrant/config/is/repository/conf/carbon.xml wso2is-5.0.0/repository/conf/carbon.xml
+#cp -rfv /vagrant/config/dss/repository/conf/carbon.xml wso2dss-3.5.0/repository/conf/carbon.xml
+#cp -rfv /vagrant/config/esb/repository/conf/carbon.xml wso2esb-4.9.0/repository/conf/carbon.xml
+#cp -rfv /vagrant/config/is/repository/conf/datasources/master-datasources.xml wso2is-5.0.0/repository/conf/datasources/master-datasources.xml
+#cp -rfv /vagrant/config/dss/repository/conf/datasources/master-datasources.xml wso2dss-3.5.0/repository/conf/datasources/master-datasources.xml
+#cp -rfv /vagrant/config/esb/repository/conf/datasources/master-datasources.xml wso2esb-4.9.0/repository/conf/datasources/master-datasources.xml
 wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar -P wso2is-5.0.0/repository/components/lib/
 wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar -P wso2dss-3.5.0/repository/components/lib/
 wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar -P wso2esb-4.9.0/repository/components/lib/
 chown -R vagrant:vagrant /opt/wso2/wso2dss-3.5.0
-chown -R vagrant:vagrant /opt/wso2/wso2is-5.0.0
+
 chown -R vagrant:vagrant /opt/wso2/wso2esb-4.9.0
 
-sudo cp /vagrant/config/wso2is /etc/init.d/wso2is
-sudo chmod 755 /etc/init.d/wso2is
+
 sudo /etc/init.d/wso2is start
-
-sudo cp /vagrant/config/wso2dss /etc/init.d/wso2dss
-sudo chmod 755 /etc/init.d/wso2dss
 sudo /etc/init.d/wso2dss start
-
-sudo cp /vagrant/config/wso2esb /etc/init.d/wso2esb
-sudo chmod 755 /etc/init.d/wso2esb
 sudo /etc/init.d/wso2esb start
+
 ISSCRIPT
 
 $as_script = <<ASSCRIPT

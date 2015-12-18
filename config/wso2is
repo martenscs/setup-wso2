@@ -15,6 +15,7 @@ case "$1" in
 start)
    echo "Starting $SERVICE_NAME ..."
    su -c "${startcmd}" $USER
+   while ! httping -qc1 https://is-master.tmwsystems.com:9443 ; do sleep 1 ; done
 ;;
 restart)
    echo "Re-starting $SERVICE_NAME ..."
@@ -23,6 +24,7 @@ restart)
 stop)
    echo "Stopping $SERVICE_NAME ..."
    su -c "${stopcmd}" $USER
+   while httping -qc1 https://is-master.tmwsystems.com:9443 ; do sleep 3 ; done
 ;;
 status)
    kill -n 0 `cat $SERVICE_HOME/wso2carbon.pid` > /dev/null 2>&1 && exit 0
